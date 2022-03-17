@@ -14,12 +14,9 @@ var can_fire = true
 
 var velocity = Vector2.ZERO
 
-#onready var animationPlayer = get_node("AnimationPlayer")
+onready var animationPlayer = get_node("AnimationPlayer")
 
 var hittable = true
-
-func _ready():
-	get_node("Sprite").frame = 0
 
 func _physics_process(delta): # if something changes over time, multiply with delta
 	var input_vector = Vector2.ZERO
@@ -31,8 +28,15 @@ func _physics_process(delta): # if something changes over time, multiply with de
 	
 	# check if no input for standing still
 	if input_vector != Vector2.ZERO:
+		if input_vector.x > 0:
+			get_node("Sprite").flip_h = false
+			animationPlayer.play("RunRight")
+		else:
+			get_node("Sprite").flip_h = true
+			animationPlayer.play("RunRight")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
+		animationPlayer.play("Idle")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	
 	# applying velocity to movement
