@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/JIM.png-b482a9452d6db731532d45d113dde674.stex"
+path="res://.import/Walls.png-e6a1fa9e7ec104a4731a79b976ec45df.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/JIM.png"
-dest_files=[ "res://.import/JIM.png-b482a9452d6db731532d45d113dde674.stex" ]
+source_file="res://Level/Walls.png"
+dest_files=[ "res://.import/Walls.png-e6a1fa9e7ec104a4731a79b976ec45df.stex" ]
 
 [params]
 
