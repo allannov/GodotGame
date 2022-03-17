@@ -14,9 +14,12 @@ var can_fire = true
 
 var velocity = Vector2.ZERO
 
-onready var animationPlayer = get_node("AnimationPlayer")
+#onready var animationPlayer = get_node("AnimationPlayer")
 
 var hittable = true
+
+func _ready():
+	get_node("Sprite").frame = 0
 
 func _physics_process(delta): # if something changes over time, multiply with delta
 	var input_vector = Vector2.ZERO
