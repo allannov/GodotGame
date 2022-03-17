@@ -9,10 +9,12 @@ const BULLET_SPAWN_DISTANCE = 45
 
 var bullet = preload("res://FightSystem/Bullet.tscn")
 var bullet_amount = 100 # have to reload MAKE THIS!!
-var fire_rate = 0.3 # items change fire_rate or spread MAKE THIS!!
+var fire_rate = 0.2 # items change fire_rate or spread MAKE THIS!!
 var can_fire = true
 
 var velocity = Vector2.ZERO
+
+onready var animationPlayer = get_node("AnimationPlayer")
 
 var hittable = true
 
@@ -49,7 +51,7 @@ func fire_bullet():
 	
 	var distance = get_global_mouse_position() - get_node("Position2D").get_global_position()
 	distance = distance.normalized()
-	print("Distance vector: {0}".format({"0":distance})) # debug
+	#print("Distance vector: {0}".format({"0":distance})) # debug
 	
 	#print("Rotation of Player: {0}".format({"0":rotation})) # debug
 	bullet_instance.position = get_node("Position2D").get_global_position() + distance * BULLET_SPAWN_DISTANCE
