@@ -4,11 +4,12 @@ extends KinematicBody2D
 const ACCELERATION = 900
 const MAX_SPEED = 250
 const FRICTION = 1500
-const BULLET_SPEED = 2000
+const BULLET_SPEED = 1000
 
 var bullet = preload("res://FightSystem/Bullet.tscn")
-var bullet_amount = 10
+var bullet_amount = 100
 var velocity = Vector2.ZERO
+var hittable = false
 
 func _physics_process(delta): # if something changes over time, multiply with delta
 	var input_vector = Vector2.ZERO
@@ -29,15 +30,14 @@ func _physics_process(delta): # if something changes over time, multiply with de
 	velocity = move_and_slide(velocity) # velocity relative to delta automatically
 	
 	# shooting mechanic
-	if Input.is_action_pressed("LMB") and (bullet_amount >= 1):
-		fire()
+	if Input.is_action_just_pressed("LMB") and (bullet_amount >= 1):
+		fire_bullet()
 		if bullet_amount > 0:
 			bullet_amount -= 1
 
 # creating a bullet when fired
-func fire():
+func fire_bullet():
 	var bullet_instance = bullet.instance()
 	bullet_instance.position = get_global_position()
-	bullet_instance.rotation_degrees = rotation_degrees
 	bullet_instance.apply_impulse(Vector2(), Vector2(BULLET_SPEED, 0).rotated(rotation))
 	get_tree().get_root().call_deferred("add_child", bullet_instance)

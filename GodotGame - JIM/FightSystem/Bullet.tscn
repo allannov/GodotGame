@@ -7,6 +7,7 @@
 extents = Vector2( 43.3333, 130 )
 
 [node name="Bullet" type="RigidBody2D"]
+gravity_scale = 0.0
 contacts_reported = 1
 contact_monitor = true
 script = ExtResource( 2 )
