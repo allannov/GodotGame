@@ -4,7 +4,7 @@ extends KinematicBody2D
 const ACCELERATION = 900
 const MAX_SPEED = 250
 const FRICTION = 1500
-const BULLET_SPEED = 1000
+const BULLET_SPEED = 700
 const BULLET_SPAWN_DISTANCE = 45
 
 var bullet = preload("res://FightSystem/Bullet.tscn")
