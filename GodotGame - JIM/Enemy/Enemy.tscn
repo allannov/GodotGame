@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends KinematicBody2D
+
+#only straight should do more natural or categorize behavior
+#all stats will be asset when we have enemy classification
+var run_speed = 25
+var velocity = Vector2.ZERO
+var player = null
+
+func _physics_process(delta):
+	velocity = Vector2.ZERO
+	if player:
+		velocity = position.direction_to(player.position) * run_speed
+	velocity = move_and_slide(velocity)
+
+
+func _on_detection_Zone_body_entered(body):
+	player = body
+
+
+func _on_detection_Zone_body_exited(body):
+	player = null
+"
+
+[node name="Enemy" type="Node2D"]
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+scale = Vector2( 1.00163, 1 )
+script = SubResource( 1 )
+
+[node name="Icon" type="Sprite" parent="KinematicBody2D"]
+position = Vector2( 0, -1 )
+scale = Vector2( 1.01464, 1.02602 )
+texture = ExtResource( 1 )
