@@ -17,6 +17,7 @@ var velocity = Vector2.ZERO
 onready var animationPlayer = get_node("AnimationPlayer")
 
 var hittable = true
+var moved_right = true # animation specific
 
 func _physics_process(delta): # if something changes over time, multiply with delta
 	var input_vector = Vector2.ZERO
@@ -25,14 +26,21 @@ func _physics_process(delta): # if something changes over time, multiply with de
 	input_vector.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	input_vector.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	input_vector = input_vector.normalized() # diagonal movement is same speed as straight
+	#print(input_vector) # debug
 	
-	# check if no input for standing still
+	# check if no input for standing still and animation choice
 	if input_vector != Vector2.ZERO:
 		if input_vector.x > 0:
+			moved_right = true
 			get_node("Sprite").flip_h = false
 			animationPlayer.play("RunRight")
-		else:
+		elif input_vector.x < 0:
+			moved_right = false
 			get_node("Sprite").flip_h = true
+			animationPlayer.play("RunRight")
+		else:
+			if moved_right:
+				get_node("Sprite").flip_h = false
 			animationPlayer.play("RunRight")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
