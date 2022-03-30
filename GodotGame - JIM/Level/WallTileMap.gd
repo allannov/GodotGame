@@ -1,3 +1,3 @@
-extends StaticBody2D
+extends TileMap
 
 var hittable = true

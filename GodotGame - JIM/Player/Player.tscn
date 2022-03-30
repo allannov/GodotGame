@@ -4,8 +4,8 @@
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 13.0
-height = 21.9999
+radius = 8.00001
+height = 5.99997
 
 [sub_resource type="Animation" id=4]
 resource_name = "Idle"
@@ -62,13 +62,13 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 1, -7 )
-scale = Vector2( 2.85625, 3 )
+position = Vector2( -1.78814e-07, 0 )
+scale = Vector2( 1.73203, 1.80682 )
 texture = ExtResource( 1 )
 hframes = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 12 )
+position = Vector2( -1, 12 )
 rotation = -1.5708
 shape = SubResource( 1 )
 
