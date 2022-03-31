@@ -2,11 +2,11 @@ extends KinematicBody2D
 # HeartBeast YouTube video - Make an Action RPG in Godot 3.2
 
 const ACCELERATION = 800
-const KNOCKBACK = 10
+const KNOCKBACK = 8
 const MAX_SPEED = 200
 const FRICTION = 1500
 const BULLET_SPEED = 300
-const BULLET_SPAWN_DISTANCE = 35
+const BULLET_SPAWN_DISTANCE = 30
 
 var bullet = preload("res://FightSystem/Bullet.tscn")
 var bullet_amount = 10
@@ -19,10 +19,7 @@ var velocity = Vector2.ZERO
 
 onready var animationPlayer = get_node("AnimationPlayer")
 
-var hittable = true
 var moved_right = true # animation specific
-
-signal reloading_done
 
 func _physics_process(delta): # if something changes over time, multiply with delta
 	var input_vector = Vector2.ZERO
@@ -111,4 +108,3 @@ func reloading():
 	is_reloading = false
 	can_fire = true
 	bullet_amount = 10
-	emit_signal("reloading_done")
