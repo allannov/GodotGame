@@ -11,7 +11,7 @@ var direction = Vector2.RIGHT
 var borders = Rect2()
 var step_history = []
 var steps_since_turn = 0
-
+var rooms = []
 
 
 func _init(starting_pos, new_borders):
@@ -22,7 +22,7 @@ func _init(starting_pos, new_borders):
 	
 
 func walk(steps):
-	create_room(position)
+	place_room(position)
 	for step in steps:
 		if randf() <= PERCENTAGE or steps_since_turn >= STEPS: # tweak numbers for different result
 			change_direction()
@@ -45,7 +45,7 @@ func step():
 		return false
 		
 func change_direction():
-	create_room(position)
+	place_room(position)
 	steps_since_turn = 0
 	var directions = DIRECTIONS.duplicate()
 	directions.erase(direction)
@@ -54,9 +54,13 @@ func change_direction():
 	while not borders.has_point(position + direction):
 		direction = directions.pop_front()
 
-func create_room(position): # new added feature for cleaner level generation
+func create_room(position, size):
+	return {position = position, size = size}
+
+func place_room(position): # new added feature for cleaner level generation
 	var size = Vector2(randi() % 4 + 2, randi() % 4 + 2)
 	var top_left_corner = (position - size / 2).ceil()
+	rooms.append(create_room(position, size))
 	for y in size.y:
 		for x in size.x:
 			var new_step = top_left_corner + Vector2(x, y)
