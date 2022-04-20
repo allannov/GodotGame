@@ -20,6 +20,8 @@ var reload_time = 1.2
 var velocity = Vector2.ZERO
 
 onready var animationPlayer = get_node("AnimationPlayer")
+var cursor_reload = preload("res://Reload.png")
+var cursor_default = preload("res://Crosshair64.png")
 
 # bool variables
 var can_fire = true
@@ -119,9 +121,11 @@ func fire_bullet() -> Vector2:
 func reloading():
 	is_reloading = true
 	can_fire = false
+	Input.set_custom_mouse_cursor(cursor_reload, Input.CURSOR_ARROW, Vector2(32, 32))
 	#print("Reloading") # debug
 	yield(get_tree().create_timer(reload_time), "timeout")
 	#print("Reloaded") # debug
+	Input.set_custom_mouse_cursor(cursor_default, Input.CURSOR_ARROW, Vector2(32, 32))
 	is_reloading = false
 	can_fire = true
 	bullet_amount = 10

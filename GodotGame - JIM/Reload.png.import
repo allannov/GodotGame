@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Reload_arrow.png-bdcb77aee96e809cc82806ca9a680622.stex"
+path="res://.import/Reload.png-3bfb9b2b99cea0629a859bbc5dc3975a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://FightSystem/Reload_arrow.png"
-dest_files=[ "res://.import/Reload_arrow.png-bdcb77aee96e809cc82806ca9a680622.stex" ]
+source_file="res://Reload.png"
+dest_files=[ "res://.import/Reload.png-3bfb9b2b99cea0629a859bbc5dc3975a.stex" ]
 
 [params]
 
