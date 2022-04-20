@@ -128,7 +128,7 @@ script = ExtResource( 2 )
 position = Vector2( 128, 72 )
 texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 1, -0.098, 5745.58, 2901.1 )
+region_rect = Rect2( 0, 0, 5746.58, 2901 )
 
 [node name="WallTileMap" type="TileMap" parent="."]
 tile_set = SubResource( 1 )

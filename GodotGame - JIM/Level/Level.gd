@@ -10,6 +10,10 @@ func _ready():
 	randomize()
 	generate_level()
 	
+func _process(_delta):
+	if Input.is_action_just_pressed("T"):
+		get_tree().reload_current_scene() # invoke this function when last enemy on the level dies
+	
 func generate_level():
 	var walker = Walker.new(Vector2(33, 17), borders)
 	var map = walker.walk(STEPS_AMOUNT) # steps, can be tweaked
