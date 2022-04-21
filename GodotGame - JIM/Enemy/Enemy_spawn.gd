@@ -2,7 +2,7 @@ extends Node
 
 func _ready():
 	var rand = RandomNumberGenerator.new()
-	var enemyvis = load("res://Enemy/Enemy.tscn")
+	var enemyvis = load("res://Enemy/Spawn.tscn")
 	
 	#while or for loop for difficulty increase
 	var enemy = enemyvis.instance()
