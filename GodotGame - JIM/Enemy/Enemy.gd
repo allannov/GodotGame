@@ -10,7 +10,7 @@ func _physics_process(delta):
 		velocity = position.direction_to(player.position) * run_speed
 	velocity = move_and_slide(velocity)
 
-var hittable = false
+var hittable = true
 
 func _on_DetectionZone_body_entered(body):
 	player = body
@@ -23,4 +23,3 @@ func _on_DetectionZone_body_exited(body):
 
 func _on_Hurt_area_entered(area):
 	queue_free()
-

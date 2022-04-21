@@ -44,12 +44,11 @@ shape = SubResource( 3 )
 
 [node name="DetectionZone" type="Area2D" parent="."]
 collision_layer = 64
-collision_mask = 128
+collision_mask = 130
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionZone"]
 shape = SubResource( 4 )
 
 [connection signal="area_entered" from="Hurt" to="." method="_on_Hurt_area_entered"]
-[connection signal="area_entered" from="DetectionZone" to="." method="_on_DetectionZone_area_entered"]
 [connection signal="body_entered" from="DetectionZone" to="." method="_on_DetectionZone_body_entered"]
 [connection signal="body_exited" from="DetectionZone" to="." method="_on_DetectionZone_body_exited"]
