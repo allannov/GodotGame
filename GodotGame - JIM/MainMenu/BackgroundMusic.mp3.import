@@ -2,12 +2,12 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/BackgroundMusic.mp3-d4e2c3e2fdab8096ad59d335408cc18f.mp3str"
+path="res://.import/BackgroundMusic.mp3-fd491fceafce5178122b532f4e7f5cc8.mp3str"
 
 [deps]
 
-source_file="res://BackgroundMusic.mp3"
-dest_files=[ "res://.import/BackgroundMusic.mp3-d4e2c3e2fdab8096ad59d335408cc18f.mp3str" ]
+source_file="res://MainMenu/BackgroundMusic.mp3"
+dest_files=[ "res://.import/BackgroundMusic.mp3-fd491fceafce5178122b532f4e7f5cc8.mp3str" ]
 
 [params]
 
