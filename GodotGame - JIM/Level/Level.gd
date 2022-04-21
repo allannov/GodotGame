@@ -37,7 +37,7 @@ func generate_level():
 func spawn_enemy(walker):
 	var enemy = Enemy.instance()
 	var amount_of_rooms = walker.rooms.size()
-	enemy.position = walker.rooms[amount_of_rooms - randi() % 500].position * 16
+	enemy.position = walker.rooms[amount_of_rooms - randi() % 500 - 1].position * 16
 	get_tree().get_root().call_deferred("add_child", enemy)
 	enemy.connect("enemy_dead", self, "lower_enemy_amount")
 	

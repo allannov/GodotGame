@@ -21,6 +21,7 @@ var hp = 3
 var velocity = Vector2.ZERO
 
 onready var animationPlayer = get_node("AnimationPlayer")
+onready var hurtbox = $HurtBox
 var cursor_reload = preload("res://Reload.png")
 var cursor_default = preload("res://Crosshair64.png")
 
@@ -29,7 +30,8 @@ var can_fire = true
 var is_reloading = false
 var moved_right = true # animation specific
 
-
+signal ammo_changed
+signal health_changed
 
 func _physics_process(delta): # if something changes over time, multiply with delta
 	var input_vector = Vector2.ZERO
@@ -78,6 +80,7 @@ func _physics_process(delta): # if something changes over time, multiply with de
 		# decrease bullet amount
 		#print("Before shot: {0}".format({0:bullet_amount})) # debug
 		bullet_amount -= 1
+		emit_signal("ammo_changed", bullet_amount)
 		#print("After shot: {0}".format({0:bullet_amount})) # debug
 		
 		# fire rate
@@ -132,10 +135,13 @@ func reloading():
 	is_reloading = false
 	can_fire = true
 	bullet_amount = 10
+	emit_signal("ammo_changed", bullet_amount)
 
 
 func _on_HurtBox_area_entered(_area):
 	hp -= 1
+	emit_signal("health_changed", hp)
+	hurtbox.start_invincibility(0.5)
 	if hp == 0:
 		queue_free()
 		# emit a signal to inform game over screen
