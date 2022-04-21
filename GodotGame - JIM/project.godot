@@ -27,6 +27,7 @@ config/icon="res://icon.png"
 [autoload]
 
 BgMusic="*res://MainMenu/BGMusic.tscn"
+Guikeybinding="*res://MainMenu/Scenes/Options/guikeybinding.tscn"
 
 [display]
 
@@ -74,6 +75,11 @@ reload={
 T={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":84,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+kontrol={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777218,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 

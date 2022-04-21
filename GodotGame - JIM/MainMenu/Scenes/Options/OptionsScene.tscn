@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://MainMenu/Fonts/Dalek 30.tres" type="DynamicFont" id=1]
 [ext_resource path="res://MainMenu/Scenes/Options/OptionsScene.gd" type="Script" id=2]
 [ext_resource path="res://MainMenu/Pictures/OptionsBG.png" type="Texture" id=3]
+[ext_resource path="res://MainMenu/Fonts/DalekPinpointBold.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 4 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -14,12 +23,31 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 3 )
 
+[node name="Label" type="Label" parent="."]
+margin_left = 26.0
+margin_top = 21.0
+margin_right = 59.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "OPTIONS"
+
 [node name="BackBtn" type="Button" parent="."]
-margin_left = 336.0
-margin_top = 213.0
+margin_left = 330.0
+margin_top = 218.0
 margin_right = 12.0
 margin_bottom = 20.0
 custom_fonts/font = ExtResource( 1 )
 text = "BACK"
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 18.0
+margin_top = 117.0
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 2 )
+text = "You can find
+keybinds change
+via \"Tab\" button :)"
+align = 1
 
 [connection signal="pressed" from="BackBtn" to="." method="_on_BackBtn_pressed"]
