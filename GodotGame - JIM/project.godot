@@ -79,6 +79,10 @@ T={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="PlayerHurtbox"
 2d_physics/layer_4="EnemyHurtbox"
+2d_physics/layer_5="PlayerHitbox"
+2d_physics/layer_6="EnemyHitbox"
+2d_physics/layer_7="DetectionEnemy"
+2d_physics/layer_8="DetectionPlayer"
 
 [physics]
 

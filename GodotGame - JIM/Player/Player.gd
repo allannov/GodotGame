@@ -129,3 +129,7 @@ func reloading():
 	is_reloading = false
 	can_fire = true
 	bullet_amount = 10
+
+
+func _on_HurtBox_area_entered(_area):
+	queue_free()

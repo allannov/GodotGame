@@ -1,14 +1,15 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Player/JIM.png" type="Texture" id=1]
-[ext_resource path="res://Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://Enemy/MaskGuy.png" type="Texture" id=1]
+[ext_resource path="res://Enemy/Enemy.gd" type="Script" id=2]
 [ext_resource path="res://FightSystem/HurtBox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://FightSystem/HitBox.tscn" type="PackedScene" id=4]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 8.00001
-height = 5.99997
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 7.0
+height = 12.0
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=7]
 resource_name = "Idle"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -23,7 +24,7 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=8]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -38,7 +39,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=9]
 resource_name = "RunRight"
 length = 0.6
 tracks/0/type = "value"
@@ -51,56 +52,61 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 4, 3, 2 ]
+"values": [ 3, 4, 2 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=7]
-radius = 14.0
-height = 12.0
+[sub_resource type="CircleShape2D" id=4]
+radius = 192.003
 
-[node name="Player" type="KinematicBody2D"]
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 14.0
+height = 16.0
+
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 14.0
+height = 16.0
+
+[node name="Enemy" type="KinematicBody2D"]
 collision_layer = 2
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -1.78814e-07, 0 )
-scale = Vector2( 1.73203, 1.80682 )
+scale = Vector2( 1.732, 1.807 )
 texture = ExtResource( 1 )
 hframes = 5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2( -1, 12 )
-rotation = -1.5708
-shape = SubResource( 1 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
-drag_margin_left = 0.1
-drag_margin_top = 0.1
-drag_margin_right = 0.1
-drag_margin_bottom = 0.1
-editor_draw_drag_margin = true
-
-[node name="Position2D" type="Position2D" parent="."]
+rotation = 1.5708
+shape = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Idle = SubResource( 4 )
-anims/RESET = SubResource( 2 )
-anims/RunRight = SubResource( 3 )
+anims/Idle = SubResource( 7 )
+anims/RESET = SubResource( 8 )
+anims/RunRight = SubResource( 9 )
+
+[node name="DetectionZone" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionZone"]
+shape = SubResource( 4 )
+
+[node name="HitBox" parent="." instance=ExtResource( 4 )]
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource( 5 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 3 )]
-position = Vector2( -1, 0 )
-collision_layer = 4
-collision_mask = 32
+collision_layer = 8
+collision_mask = 16
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 
+[editable path="HitBox"]
 [editable path="HurtBox"]
