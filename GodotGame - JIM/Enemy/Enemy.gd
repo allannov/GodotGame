@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
-const ACCELERATION = 800
+const ACCELERATION = 5000
 const KNOCKBACK = 80
-const MAX_SPEED = 150
+const MAX_SPEED = 190
 const FRICTION = 1500
 
 var velocity = Vector2.ZERO
@@ -17,10 +17,14 @@ signal enemy_dead
 onready var animationPlayer = get_node("AnimationPlayer")
 
 func _physics_process(delta):
-	velocity = Vector2.ZERO
+	knockback = knockback.move_toward(Vector2.ZERO, 200 * delta)
+	knockback = move_and_slide(knockback)
 	
 	if player: # enemy movement toward player
 		velocity = position.direction_to(player.position)
+		velocity = velocity.move_toward(velocity * MAX_SPEED, ACCELERATION * delta)
+	else:
+		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	
 	if velocity != Vector2.ZERO:
 		if velocity.x > 0:
@@ -38,12 +42,9 @@ func _physics_process(delta):
 		#velocity = velocity.move_toward(velocity * MAX_SPEED, ACCELERATION * delta)
 	else:
 		animationPlayer.play("Idle")
-		#velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	
-	#velocity = move_and_slide(velocity)
+	velocity = move_and_slide(velocity)
 	
-	knockback = knockback.move_toward(Vector2.ZERO, 200 * delta)
-	knockback = move_and_slide(knockback)
 
 func _on_HurtBox_area_entered(area):
 	knockback = area.knockback_vector * KNOCKBACK
@@ -51,3 +52,11 @@ func _on_HurtBox_area_entered(area):
 	if hp == 0:
 		emit_signal("enemy_dead", position)
 		queue_free()
+
+
+func _on_PlayerDetection_body_entered(body):
+	player = body
+
+
+func _on_PlayerDetection_body_exited(body):
+	player = null
