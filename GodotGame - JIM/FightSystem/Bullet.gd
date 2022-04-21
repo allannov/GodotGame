@@ -16,3 +16,7 @@ func _process(delta):
 	
 func _on_Bullet_body_entered(_body):
 	queue_free()
+
+
+func _on_HitBox_area_entered(_area):
+	queue_free()
