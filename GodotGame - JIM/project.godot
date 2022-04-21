@@ -28,6 +28,7 @@ config/icon="res://icon.png"
 
 BgMusic="*res://MainMenu/BGMusic.tscn"
 Guikeybinding="*res://MainMenu/Scenes/Options/guikeybinding.tscn"
+LevelVariables="*res://Level/LevelVariables.gd"
 
 [display]
 
