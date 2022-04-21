@@ -141,7 +141,7 @@ func reloading():
 func _on_HurtBox_area_entered(_area):
 	hp -= 1
 	emit_signal("health_changed", hp)
-	hurtbox.start_invincibility(0.5)
+	hurtbox.start_invincibility(1)
 	if hp == 0:
 		queue_free()
 		# emit a signal to inform game over screen
