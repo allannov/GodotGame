@@ -64,3 +64,7 @@ func fire_bullet():
 	
 	#get_tree().get_root().call_deferred("add_child", bullet_instance) # other way of adding child
 	get_tree().get_root().add_child(bullet_instance)
+
+#if acton from enemy but now only by collision layers overlaying
+func _on_Hurt_area_entered(area):
+	queue_free()
