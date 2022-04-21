@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Bullet.png-8556c7b1165e553b17f4d76e597a3ac5.stex"
+path="res://.import/HeartIcon.png-30f29366e3182f395ebc05dea7f8f855.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Bullet.png"
-dest_files=[ "res://.import/Bullet.png-8556c7b1165e553b17f4d76e597a3ac5.stex" ]
+source_file="res://FightSystem/HeartIcon.png"
+dest_files=[ "res://.import/HeartIcon.png-30f29366e3182f395ebc05dea7f8f855.stex" ]
 
 [params]
 
