@@ -12,6 +12,8 @@ onready var tileMap = $WallTileMap
 
 var enemy_amount
 
+signal level_reload
+
 func _ready():
 	randomize()
 	generate_level()
@@ -25,7 +27,6 @@ func generate_level():
 	player.position = map.front() * 16
 	
 	enemy_amount = 5
-	print(enemy_amount)
 	for i in enemy_amount:
 		spawn_enemy(walker)
 	
@@ -43,20 +44,18 @@ func spawn_enemy(walker):
 	
 func lower_enemy_amount(last_pos):
 	enemy_amount -= 1
-	print(enemy_amount)
 	if enemy_amount == 0:
-		print("Last enemy dead!")
 		spawn_exit(last_pos)
 		
 		
 func spawn_exit(last_pos):
-	print("Delivering exit!")
 	var exit = Exit.instance()
-	add_child(exit)
+	get_tree().get_root().call_deferred("add_child", exit)
 	exit.position = last_pos # LAST ENEMY DEATH POSITION
 	exit.position.x -= 10
 	exit.position.y -= 10
 	exit.connect("leaving_level", self, "reload_level")
 	
-func reload_level():
+func reload_level(body):
+	body.queue_free()
 	get_tree().reload_current_scene() # invoke this function when last enemy on the level dies and the player touches the exit

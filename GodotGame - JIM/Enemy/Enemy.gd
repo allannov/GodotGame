@@ -51,5 +51,4 @@ func _on_HurtBox_area_entered(_area):
 	hp -= 1
 	if hp == 0:
 		emit_signal("enemy_dead", position)
-		print(position)
 		queue_free()
