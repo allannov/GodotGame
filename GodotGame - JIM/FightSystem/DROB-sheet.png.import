@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Floor.png-2743dbaa84488355eaf7cefe94f6e975.stex"
+path="res://.import/DROB-sheet.png-cdb29b1429c0897dcbe83a5f587045de.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Level/Floor.png"
-dest_files=[ "res://.import/Floor.png-2743dbaa84488355eaf7cefe94f6e975.stex" ]
+source_file="res://FightSystem/DROB-sheet.png"
+dest_files=[ "res://.import/DROB-sheet.png-cdb29b1429c0897dcbe83a5f587045de.stex" ]
 
 [params]
 
@@ -19,8 +19,8 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=1
-flags/filter=false
+flags/repeat=0
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0

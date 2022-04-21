@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Floor.png-2743dbaa84488355eaf7cefe94f6e975.stex"
+path="res://.import/MaskGuy.png-3d2cac980198a5bb3bc13461feeef3c5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Level/Floor.png"
-dest_files=[ "res://.import/Floor.png-2743dbaa84488355eaf7cefe94f6e975.stex" ]
+source_file="res://Enemy/MaskGuy.png"
+dest_files=[ "res://.import/MaskGuy.png-3d2cac980198a5bb3bc13461feeef3c5.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=1
+flags/repeat=0
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
