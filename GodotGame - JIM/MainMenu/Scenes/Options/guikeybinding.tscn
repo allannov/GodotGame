@@ -1,0 +1,96 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://guikeybinding.gd" type="Script" id=1]
+[ext_resource path="res://MainMenu/Scenes/Options/btnparent.tscn" type="PackedScene" id=2]
+[ext_resource path="res://MainMenu/Fonts/Dalek 30.tres" type="DynamicFont" id=3]
+
+[node name="guikeybinding" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="GridContainer" type="GridContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_constants/vseparation = 6
+custom_constants/hseparation = 12
+columns = 2
+
+[node name="Label" type="Label" parent="GridContainer"]
+margin_right = 184.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 3 )
+text = "MOVE LEFT"
+
+[node name="btnparent" parent="GridContainer" groups=["button_keys"] instance=ExtResource( 2 )]
+margin_left = 196.0
+margin_right = 221.0
+margin_bottom = 30.0
+text = "A"
+action_name = "move_left"
+
+[node name="Label2" type="Label" parent="GridContainer"]
+margin_top = 36.0
+margin_right = 184.0
+margin_bottom = 66.0
+custom_fonts/font = ExtResource( 3 )
+text = "MOVE RIGHT"
+
+[node name="btnparent2" parent="GridContainer" groups=["button_keys"] instance=ExtResource( 2 )]
+margin_left = 196.0
+margin_top = 36.0
+margin_right = 221.0
+margin_bottom = 66.0
+text = "D"
+action_name = "move_right"
+
+[node name="Label3" type="Label" parent="GridContainer"]
+margin_top = 72.0
+margin_right = 184.0
+margin_bottom = 102.0
+custom_fonts/font = ExtResource( 3 )
+text = "MOVE UP"
+
+[node name="btnparent3" parent="GridContainer" groups=["button_keys"] instance=ExtResource( 2 )]
+margin_left = 196.0
+margin_top = 72.0
+margin_right = 221.0
+margin_bottom = 102.0
+text = "W"
+action_name = "move_up"
+
+[node name="Label4" type="Label" parent="GridContainer"]
+margin_top = 108.0
+margin_right = 184.0
+margin_bottom = 138.0
+custom_fonts/font = ExtResource( 3 )
+text = "MOVE DOWN"
+
+[node name="btnparent4" parent="GridContainer" groups=["button_keys"] instance=ExtResource( 2 )]
+margin_left = 196.0
+margin_top = 108.0
+margin_right = 221.0
+margin_bottom = 138.0
+text = "S"
+action_name = "move_down"
+
+[node name="Label5" type="Label" parent="GridContainer"]
+margin_top = 144.0
+margin_right = 184.0
+margin_bottom = 174.0
+custom_fonts/font = ExtResource( 3 )
+text = "RELOAD"
+
+[node name="btnparent5" parent="GridContainer" groups=["button_keys"] instance=ExtResource( 2 )]
+margin_left = 196.0
+margin_top = 144.0
+margin_right = 221.0
+margin_bottom = 174.0
+text = "R"
+action_name = "reload"
