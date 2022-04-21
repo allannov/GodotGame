@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://fonts/Dalek60.tres" type="DynamicFont" id=1]
+[ext_resource path="res://title_screen/buttons/MenuButton.gd" type="Script" id=2]
+
+[node name="MenuButton" type="Button"]
+margin_right = 360.0
+margin_bottom = 60.0
+flat = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 360.0
+margin_bottom = 60.0
+custom_colors/font_color_shadow = Color( 0, 0.215686, 0.25098, 1 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+custom_fonts/font = ExtResource( 1 )
+text = "Label"
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,0 +1,130 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Logo2.png" type="Texture" id=1]
+[ext_resource path="res://title_screen/buttons/OptionsButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://title_screen/buttons/NewGameButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://title_screen/buttons/ContinueButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://fonts/Dalek60.tres" type="DynamicFont" id=5]
+[ext_resource path="res://fonts/Sprite47.tres" type="DynamicFont" id=6]
+[ext_resource path="res://fade_in/FadeIn.tscn" type="PackedScene" id=7]
+[ext_resource path="res://title_screen.gd" type="Script" id=8]
+[ext_resource path="res://picture/New Project(3).png" type="Texture" id=9]
+[ext_resource path="res://Exit.gd" type="Script" id=10]
+[ext_resource path="res://title_screen/buttons/HelpButton.tscn" type="PackedScene" id=11]
+[ext_resource path="res://title_screen/buttons/MenuButton.gd" type="Script" id=12]
+
+[node name="TitleScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Logo" type="TextureRect" parent="."]
+margin_left = 120.0
+margin_top = 20.0
+margin_right = 1160.0
+margin_bottom = 192.0
+texture = ExtResource( 1 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VersionLabel" type="Label" parent="."]
+margin_left = 120.0
+margin_top = 580.0
+margin_right = 1177.0
+margin_bottom = 679.0
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 6 )
+text = "Version 1.0
+Leonid Maznitsa, Anton Jastsuk, Allan Ivanov"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="VBoxContainer" parent="."]
+margin_left = 120.0
+margin_top = 100.0
+margin_right = 1160.0
+margin_bottom = 611.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterRow" type="HBoxContainer" parent="Menu"]
+margin_right = 1040.0
+margin_bottom = 511.0
+size_flags_vertical = 3
+
+[node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
+margin_right = 518.0
+margin_bottom = 511.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 20
+alignment = 1
+
+[node name="NewGameButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 3 )]
+margin_top = 105.0
+margin_right = 518.0
+margin_bottom = 165.0
+rect_min_size = Vector2( 360, 60 )
+
+[node name="ContinueButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 4 )]
+margin_top = 185.0
+margin_right = 518.0
+margin_bottom = 245.0
+rect_min_size = Vector2( 360, 60 )
+
+[node name="OptionsButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 2 )]
+margin_top = 265.0
+margin_right = 518.0
+margin_bottom = 325.0
+rect_min_size = Vector2( 360, 60 )
+
+[node name="HelpButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 11 )]
+margin_top = 345.0
+margin_right = 518.0
+margin_bottom = 405.0
+rect_min_size = Vector2( 360, 60 )
+flat = true
+script = ExtResource( 12 )
+scene_to_load = "res://game/HelpScene.tscn"
+
+[node name="CenterContainer" type="CenterContainer" parent="Menu/CenterRow"]
+margin_left = 522.0
+margin_right = 1040.0
+margin_bottom = 511.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ExitButton" type="Button" parent="."]
+margin_left = 120.0
+margin_top = 505.0
+margin_right = 638.0
+margin_bottom = 601.0
+custom_fonts/font = ExtResource( 5 )
+text = "EXIT"
+flat = true
+align = 0
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FadeIn" parent="." instance=ExtResource( 7 )]
+visible = false
+
+[connection signal="button_up" from="ExitButton" to="ExitButton" method="_on_ExitButton_button_up"]
+[connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]
