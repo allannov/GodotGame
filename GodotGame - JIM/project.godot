@@ -24,6 +24,10 @@ config/name="GodotGame - JIM"
 run/main_scene="res://Level/Level.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+LevelVariables="*res://Level/LevelVariables.gd"
+
 [display]
 
 window/size/width=480
@@ -81,8 +85,6 @@ T={
 2d_physics/layer_4="EnemyHurtbox"
 2d_physics/layer_5="PlayerHitbox"
 2d_physics/layer_6="EnemyHitbox"
-2d_physics/layer_7="DetectionEnemy"
-2d_physics/layer_8="DetectionPlayer"
 
 [physics]
 

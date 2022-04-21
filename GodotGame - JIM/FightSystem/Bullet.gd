@@ -1,9 +1,13 @@
 extends RigidBody2D
 
 var time = 0
+var knockback_vector = Vector2.ZERO
+
+onready var Bullet_HitBox = $HitBox
 
 func _ready():
 	#warning-ignore:return_value_discarded
+	Bullet_HitBox.knockback_vector = knockback_vector
 	connect("body_entered", self, "_on_Bullet_body_entered")
 
 func _process(delta):
@@ -16,7 +20,6 @@ func _process(delta):
 	
 func _on_Bullet_body_entered(_body):
 	queue_free()
-
 
 func _on_HitBox_area_entered(_area):
 	queue_free()

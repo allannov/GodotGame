@@ -15,6 +15,7 @@ var bullet = preload("res://FightSystem/Bullet.tscn")
 var bullet_amount = 10
 var fire_rate = 0.2 # items change fire_rate or spread MAKE THIS!!
 var reload_time = 1.2
+var hp = 3
 
 
 var velocity = Vector2.ZERO
@@ -112,6 +113,8 @@ func fire_bullet() -> Vector2:
 	# bullet flies in the direction of the vector
 	bullet_instance.apply_impulse(Vector2(), Vector2(BULLET_SPEED, 0).rotated(bullet_instance.rotation))
 	
+	bullet_instance.knockback_vector = distance.normalized() # for enemy knockback
+	
 	#get_tree().get_root().call_deferred("add_child", bullet_instance) # other way of adding child
 	get_tree().get_root().add_child(bullet_instance)
 	
@@ -132,4 +135,7 @@ func reloading():
 
 
 func _on_HurtBox_area_entered(_area):
-	queue_free()
+	hp -= 1
+	if hp == 0:
+		queue_free()
+		# emit a signal to inform game over screen

@@ -10,9 +10,8 @@ var borders = Rect2(1, 1, 66, 34)
 
 onready var tileMap = $WallTileMap
 
-var enemy_amount
-
-signal level_reload
+var enemy_amount = 5
+var level_hardness = LevelVariables.level_hardness # 1 - min, 10 - max
 
 func _ready():
 	randomize()
@@ -26,7 +25,7 @@ func generate_level():
 	add_child(player)
 	player.position = map.front() * 16
 	
-	enemy_amount = 5
+	enemy_amount += level_hardness
 	for i in enemy_amount:
 		spawn_enemy(walker)
 	
@@ -57,5 +56,9 @@ func spawn_exit(last_pos):
 	exit.connect("leaving_level", self, "reload_level")
 	
 func reload_level(body):
+	if LevelVariables.level_hardness != 10:
+		LevelVariables.level_hardness += 1
+		if LevelVariables.level_hardness % 3 == 0:
+			LevelVariables.enemy_hardness += 1
 	body.queue_free()
 	get_tree().reload_current_scene() # invoke this function when last enemy on the level dies and the player touches the exit
