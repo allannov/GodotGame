@@ -144,4 +144,6 @@ func _on_HurtBox_area_entered(_area):
 	hurtbox.start_invincibility(1)
 	if hp == 0:
 		queue_free()
+		get_tree().change_scene("res://MainMenu/MainMenu.tscn")
+		hp = 3
 		# emit a signal to inform game over screen
